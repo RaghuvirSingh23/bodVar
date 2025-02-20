@@ -1,0 +1,20 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: url('./assets/background.png') no-repeat center center;
+  background-size: cover;
+}
+
+.background-section {
+  width:50%;
+  height: 100%;
+  background-size: cover;
+}
+
+.form-section {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
