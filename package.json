@@ -1,0 +1,23 @@
+{
+  "name": "bodvar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaghuvirSingh23/bodVar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaghuvirSingh23/bodVar/issues"
+  },
+  "homepage": "https://github.com/RaghuvirSingh23/bodVar#readme",
+  "description": "",
+  "devDependencies": {
+    "electron": "^34.2.0"
+  }
+}
