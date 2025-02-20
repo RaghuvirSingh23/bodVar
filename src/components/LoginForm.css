@@ -43,7 +43,7 @@ body {
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.8s ease;
-  background-color: #ccc;
+  background-color: #c5d6b1;
 }
 
 .form-field input:focus {
@@ -57,6 +57,7 @@ body {
   font-size: 0.9rem;
   text-align: center;
   margin-bottom: 1rem;
+  min-height: 1rem;
 }
 
 button {

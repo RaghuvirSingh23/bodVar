@@ -20,7 +20,7 @@ function LoginForm() {
     setError('');
 
     if (mode === 'login') {
-      const { error } = await supabase.auth.signIn({ email, password });
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) setError(error.message);
     } else {
       const { error } = await supabase.auth.signUp({ email, password });
@@ -53,7 +53,7 @@ function LoginForm() {
             required
           />
         </div>
-        {error && <p className="error">{error}</p>}
+        {<p className="error">{error || "\u00A0"}</p>}
         <button type="submit" disabled={loading}>
           {loading ? 'Please wait...' : mode === 'login' ? 'Login' : 'Sign Up'}
         </button>
