@@ -6,10 +6,23 @@
   background-size: cover;
 }
 
+.drag-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px; /* Adjust height as needed */
+  -webkit-app-region: drag;
+  z-index: 10;
+}
+
 .background-section {
-  width:50%;
+  width: 50%;
   height: 100%;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-section {
