@@ -1,0 +1,23 @@
+.animated-heading {
+    font-size: 3.5rem;
+    color: rgb(236, 240, 209);
+    text-align: left;        /* Anchor text to left */
+    font-weight: bold;
+    width: 100%;           
+    overflow: hidden;      
+    white-space: nowrap;   
+    padding-left: 4rem;
+    padding-bottom: 10rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .cursor {
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  

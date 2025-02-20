@@ -4,10 +4,8 @@
   font-family: Arial, sans-serif;
   background: url('./assets/background.png') no-repeat center center;
   background-size: cover;
-  position: relative; /* Needed for absolute positioning of .drag-bar */
 }
 
-/* New draggable bar (invisible) at the top */
 .drag-bar {
   position: absolute;
   top: 0;
@@ -22,6 +20,9 @@
   width: 50%;
   height: 100%;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-section {
