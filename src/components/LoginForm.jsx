@@ -31,13 +31,13 @@ function LoginForm() {
 
   return (
     <div className="login-form-container">
-      <h2>{mode === 'login' ? 'Login' : 'Sign Up'}</h2>
+      <h2>{mode === 'login' ? 'LOGIN' : 'SIGN UP'}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-field">
           <label>Email</label>
           <input
             type="email"
-            placeholder="your-email@example.com"
+            placeholder="raghusi@bodvar.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -47,7 +47,7 @@ function LoginForm() {
           <label>Password</label>
           <input
             type="password"
-            placeholder="your password"
+            placeholder="itsaSecret"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
