@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { FiSend, FiSettings } from 'react-icons/fi';
+import { LuSend } from 'react-icons/lu';
+import { FiSettings } from 'react-icons/fi';
+import { supabase } from '../supabaseClient';
 import './MainPage.css';
 
 const MainPage = () => {
@@ -19,6 +21,12 @@ const MainPage = () => {
     setPrompt('');
   };
 
+  // Logout function
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setShowSettings(false);
+  };
+
   return (
     <div className="main-page">
       {/* Settings Button (top-right) */}
@@ -30,8 +38,11 @@ const MainPage = () => {
         <div className="settings-modal">
           <div className="settings-content">
             <h2>Settings</h2>
+            {/* Logout Button */}
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
             <button onClick={() => setShowSettings(false)}>Close</button>
-            {/* Future settings go here */}
           </div>
         </div>
       )}
@@ -53,7 +64,7 @@ const MainPage = () => {
             onKeyDown={handleKeyDown}
           />
           <button className="send-button" onClick={handleSendClick}>
-            <FiSend size={16} />
+            <LuSend size={16} />
           </button>
         </div>
       </div>

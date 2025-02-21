@@ -20,9 +20,15 @@ const App = () => {
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
+        console.log('Auth event:', event, session);
         if (session) {
           setAuthenticated(true);
         } else {
+          setAuthenticated(false);
+          setSlide(false);
+        }
+        if (event === 'SIGNED_OUT') {
+          console.log('User signed out');
           setAuthenticated(false);
         }
       }

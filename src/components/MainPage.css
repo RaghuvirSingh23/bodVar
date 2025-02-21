@@ -119,3 +119,19 @@
   width: 300px;
   text-align: center;
 }
+
+/* LOGOUT BUTTON inside settings popup */
+.logout-button {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #c82333;
+}
