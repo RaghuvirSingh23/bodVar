@@ -49,49 +49,65 @@ function LoginForm({ onAuthSuccess }) {
     <div className="login-form-container">
       <h2>{mode === 'login' ? 'LOGIN' : 'SIGN UP'}</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-field">
-          <label><FiMail className="input-icon" /> Email</label>
-          <input
-            type="email"
-            placeholder="raghusi@bodvar.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-field">
-          <label><FiLock className="input-icon" /> Password</label>
-          <div className="input-with-icon">
+        <div className={`form-fields ${mode === 'signup' ? 'expanded' : ''}`}>
+          <div className="form-field">
+            <label>
+              <FiMail className="input-icon" /> Email
+            </label>
             <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="email"
+              placeholder="raghusi@bodvar.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <button type="button" className="toggle-password-btn" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <FiEyeOff /> : <FiEye />}
-            </button>
           </div>
-        </div>
-        {mode === 'signup' && (
           <div className="form-field">
-            <label><FiLock className="input-icon" /> Confirm Password</label>
+            <label>
+              <FiLock className="input-icon" /> Password
+            </label>
             <div className="input-with-icon">
               <input
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder="Confirm your password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                type={showPassword ? "text" : "password"}
+                placeholder="itsaSecret"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button type="button" className="toggle-password-btn" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+              <button
+                type="button"
+                className="toggle-password-btn"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FiEyeOff /> : <FiEye />}
               </button>
             </div>
           </div>
-        )}
-        {<p className="error">{error || "\u00A0"}</p>}
+          {mode === 'signup' && (
+            <div className="form-field">
+              <label>
+                <FiLock className="input-icon" /> Confirm Password
+              </label>
+              <div className="input-with-icon">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm your password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="toggle-password-btn"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+        <p className="error">{error || "\u00A0"}</p>
         <button type="submit" disabled={loading}>
           {loading ? 'Please wait...' : mode === 'login' ? 'Login' : 'Sign Up'}
         </button>

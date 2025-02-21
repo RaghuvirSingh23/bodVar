@@ -1,33 +1,3 @@
-/* New container styling for password inputs */
-.input-with-icon {
-  position: relative;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-/* Input inside the container: no border, full width, with right padding for toggle */
-.input-with-icon input {
-  width: 100%;
-  border: none;
-  padding: 0.75rem 50px 0.75rem 0.75rem;
-  background-color: #c5d6b1;
-  outline: none;
-}
-
-/* The toggle button now uses fit-content and is positioned inside the container */
-.toggle-password-btn {
-  width: fit-content;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-/* Retain other styles as before */
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 
 body {
@@ -57,6 +27,17 @@ body {
   color: rgb(236, 240, 209);
 }
 
+.form-fields {
+  transition: max-height 1s ease, opacity 0.5s ease;
+  overflow: hidden;
+  max-height: 200px;
+  opacity: 1;
+}
+
+.form-fields.expanded {
+  max-height: 400px;
+}
+
 .form-field {
   margin-bottom: 2rem;
   display: flex;
@@ -71,6 +52,49 @@ body {
 .input-icon {
   margin-right: 8px;
   vertical-align: middle;
+}
+
+.input-with-icon {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.input-with-icon input {
+  width: 100%;
+  border: none;
+  padding: 0.75rem 50px 0.75rem 0.75rem;
+  background-color: #c5d6b1;
+  outline: none;
+}
+
+.toggle-password-btn {
+  width: fit-content;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.toggle-password-btn:hover {
+  background: transparent !important;
+}
+
+.toggle-password-btn svg {
+  transition: color 0.3s ease;
+  color: #0f531f;
+}
+
+.toggle-password-btn:hover svg {
+  color: #007bff;
 }
 
 .form-field input {
