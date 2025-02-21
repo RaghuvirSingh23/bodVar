@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import './LoginForm.css';
 
-function LoginForm() {
+function LoginForm({ onAuthSuccess }) {
   const [mode, setMode] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,10 +21,18 @@ function LoginForm() {
 
     if (mode === 'login') {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) setError(error.message);
+      if (error) {
+        setError(error.message);
+      } else {
+        if (onAuthSuccess) onAuthSuccess();
+      }
     } else {
       const { error } = await supabase.auth.signUp({ email, password });
-      if (error) setError(error.message);
+      if (error) {
+        setError(error.message);
+      } else {
+        if (onAuthSuccess) onAuthSuccess();
+      }
     }
     setLoading(false);
   };
