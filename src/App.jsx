@@ -38,11 +38,19 @@ const App = () => {
     };
   }, []);
 
-  const handleAuthSuccess = () => {
+  const handleAuthSuccess = async () => {
     setSlide(true);
-    setTimeout(() => {
-      setAuthenticated(true);
-    }, 800);
+    setTimeout(async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session && session.user.email_confirmed_at) {
+        setAuthenticated(true);
+      } else {
+        setSlide(false);
+        // Optionally, inform the user that email verification is required.
+        alert('Please verify your email before proceeding.');
+        setAuthenticated(false);
+      }
+    }, 800); // 800ms should match your CSS transition duration
   };
 
   return (
