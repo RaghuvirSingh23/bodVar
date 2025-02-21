@@ -46,11 +46,10 @@ const App = () => {
         setAuthenticated(true);
       } else {
         setSlide(false);
-        // Optionally, inform the user that email verification is required.
         alert('Please verify your email before proceeding.');
         setAuthenticated(false);
       }
-    }, 800); // 800ms should match your CSS transition duration
+    }, 800);
   };
 
   return (

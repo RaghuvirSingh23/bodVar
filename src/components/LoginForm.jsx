@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
+import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import './LoginForm.css';
 
 function LoginForm({ onAuthSuccess }) {
   const [mode, setMode] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const toggleMode = () => {
     setMode(mode === 'login' ? 'signup' : 'login');
@@ -18,7 +22,11 @@ function LoginForm({ onAuthSuccess }) {
     e.preventDefault();
     setLoading(true);
     setError('');
-
+    if (mode === 'signup' && password !== confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
     if (mode === 'login') {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
@@ -42,7 +50,7 @@ function LoginForm({ onAuthSuccess }) {
       <h2>{mode === 'login' ? 'LOGIN' : 'SIGN UP'}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-field">
-          <label>Email</label>
+          <label><FiMail className="input-icon" /> Email</label>
           <input
             type="email"
             placeholder="raghusi@bodvar.com"
@@ -52,15 +60,37 @@ function LoginForm({ onAuthSuccess }) {
           />
         </div>
         <div className="form-field">
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="itsaSecret"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <label><FiLock className="input-icon" /> Password</label>
+          <div className="input-with-icon">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="button" className="toggle-password-btn" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <FiEyeOff /> : <FiEye />}
+            </button>
+          </div>
         </div>
+        {mode === 'signup' && (
+          <div className="form-field">
+            <label><FiLock className="input-icon" /> Confirm Password</label>
+            <div className="input-with-icon">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm your password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              <button type="button" className="toggle-password-btn" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+              </button>
+            </div>
+          </div>
+        )}
         {<p className="error">{error || "\u00A0"}</p>}
         <button type="submit" disabled={loading}>
           {loading ? 'Please wait...' : mode === 'login' ? 'Login' : 'Sign Up'}
