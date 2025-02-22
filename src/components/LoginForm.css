@@ -5,9 +5,10 @@ body {
 }
 
 .login-form-container {
-  background: rgba(141, 217, 213, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  background-color: black;
   border: 3px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 2rem;
   border-radius: 12px;
